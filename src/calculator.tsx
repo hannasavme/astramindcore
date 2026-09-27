@@ -83,38 +83,53 @@ function mapKeyboardEvent(e: KeyboardEvent): PadKey | null {
   return null
 }
 
-function publishPerformance(correct: StageScores, attempted: StageScores, animate = true) {
+function publishPerformance(
+  correct: StageScores,
+  attempted: StageScores,
+  skipped: StageScores,
+  animate = true,
+) {
   for (const diff of DIFFICULTIES) {
     const ok = correct[diff]
-    const total = attempted[diff]
+    const total = attempted[diff] + skipped[diff]
     const okPct = total > 0 ? Math.round((ok / total) * 100) : 0
-    const badPct = total > 0 ? 100 - okPct : 0
+    const skipPct = total > 0 ? Math.round((skipped[diff] / total) * 100) : 0
+    const badPct = total > 0 ? 100 - okPct - skipPct : 0
 
     const totalEl = document.getElementById(`perf-${diff}-total`)
     const okBar = document.getElementById(`perf-${diff}-ok`) as HTMLElement | null
     const badBar = document.getElementById(`perf-${diff}-bad`) as HTMLElement | null
+    const skipBar = document.getElementById(`perf-${diff}-skip`) as HTMLElement | null
     const okPctEl = document.getElementById(`perf-${diff}-ok-pct`)
     const badPctEl = document.getElementById(`perf-${diff}-bad-pct`)
+    const skipPctEl = document.getElementById(`perf-${diff}-skip-pct`)
 
     if (totalEl) totalEl.textContent = String(total)
     if (okPctEl) okPctEl.textContent = `${okPct}% correct`
     if (badPctEl) badPctEl.textContent = `${badPct}% incorrect`
+    if (skipPctEl) skipPctEl.textContent = `${skipPct}% skipped`
 
-    if (okBar && badBar) {
+    if (okBar && badBar && skipBar) {
       if (animate) {
         okBar.style.width = '0%'
         badBar.style.width = '0%'
+        skipBar.style.width = '0%'
         // Force layout so the width transition runs once.
         void okBar.offsetWidth
       }
       okBar.style.width = `${okPct}%`
       badBar.style.width = `${badPct}%`
+      skipBar.style.width = `${skipPct}%`
     }
   }
 
-  const dash = document.getElementById('liveDash')
-  if (dash) dash.dataset.sessionDone = '1'
-  window.dispatchEvent(new CustomEvent('astra:session-done'))
+  // `animate` is only true when a session actually finishes (startSession's
+  // reset call passes false), so gate the completion signal on it too.
+  if (animate) {
+    const dash = document.getElementById('liveDash')
+    if (dash) dash.dataset.sessionDone = '1'
+    window.dispatchEvent(new CustomEvent('astra:session-done'))
+  }
 }
 
 export function Calculator() {
@@ -135,6 +150,7 @@ export function Calculator() {
   const difficultyRef = useRef<Difficulty>('easy')
   const stageCorrectRef = useRef<StageScores>(emptyScores())
   const stageAttemptedRef = useRef<StageScores>(emptyScores())
+  const stageSkippedRef = useRef<StageScores>(emptyScores())
   const inputRef = useRef('')
   const questionRef = useRef(question)
 
@@ -213,7 +229,7 @@ export function Calculator() {
     setPhase('done')
     setInputValue('')
     setFeedback(null)
-    publishPerformance(stageCorrectRef.current, stageAttemptedRef.current, true)
+    publishPerformance(stageCorrectRef.current, stageAttemptedRef.current, stageSkippedRef.current, true)
   }, [clearNextTimer, setInputValue])
 
   const beginRunning = useCallback(() => {
@@ -233,9 +249,10 @@ export function Calculator() {
     clearConnectTimer()
     stageCorrectRef.current = emptyScores()
     stageAttemptedRef.current = emptyScores()
+    stageSkippedRef.current = emptyScores()
     const dash = document.getElementById('liveDash')
     if (dash) delete dash.dataset.sessionDone
-    publishPerformance(emptyScores(), emptyScores(), false)
+    publishPerformance(emptyScores(), emptyScores(), emptyScores(), false)
     setQuestion(makeQuestion('easy'))
     setInputValue('')
     setFeedback(null)
@@ -256,6 +273,10 @@ export function Calculator() {
       return
     }
     if (phase !== 'playing' || feedback) return
+    stageSkippedRef.current = {
+      ...stageSkippedRef.current,
+      [difficulty]: stageSkippedRef.current[difficulty] + 1,
+    }
     clearNextTimer()
     next()
   }, [phase, difficulty, feedback, clearNextTimer, next, startStage])
@@ -314,6 +335,13 @@ export function Calculator() {
     }, 1000)
     return () => window.clearInterval(id)
   }, [phase])
+
+  // This is the only device on the page now, so the session starts itself —
+  // no visitor has to find and press Start.
+  useEffect(() => {
+    startSession()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   useEffect(
     () => () => {

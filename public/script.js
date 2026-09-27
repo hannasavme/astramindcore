@@ -1,38 +1,25 @@
   const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  const hdr=document.getElementById('hdr');
-  addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>20));
 
-  // mobile menu toggle
-  (function(){
-    const btn=document.getElementById('menuBtn');
-    const nav=document.getElementById('navLinks');
-    if(!btn||!nav)return;
-    function closeMenu(){
-      nav.classList.remove('open');
-      btn.setAttribute('aria-expanded','false');
-      nav.setAttribute('aria-hidden','true');
-    }
-    function openMenu(){
-      nav.classList.add('open');
-      btn.setAttribute('aria-expanded','true');
-      nav.setAttribute('aria-hidden','false');
-    }
-    btn.addEventListener('click',()=>{
-      nav.classList.contains('open')?closeMenu():openMenu();
-    });
-    nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
-    document.addEventListener('click',e=>{
-      if(nav.classList.contains('open')&&!nav.contains(e.target)&&!btn.contains(e.target))closeMenu();
-    });
-    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
-    addEventListener('resize',()=>{if(innerWidth>960)closeMenu();});
-  })();
+  // scroll lock while the device session is running — the real Calculator
+  // (src/calculator.tsx) dispatches 'astra:session-done' once it finishes.
+  function lockScroll(){
+    document.documentElement.classList.add('lock-scroll');
+    document.body.classList.add('lock-scroll');
+  }
+  function unlockScroll(){
+    document.documentElement.classList.remove('lock-scroll');
+    document.body.classList.remove('lock-scroll');
+  }
+  lockScroll();
+  addEventListener('astra:session-done',unlockScroll,{once:true});
 
   // reveal
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.15});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-  // live dashboard demo — animates once on first view (stops after session results)
+  // live dashboard demo — plays once the dashboard scrolls into view. In this
+  // reduced page that only happens after the real session has finished (the
+  // device auto-scrolls down to it), so it always runs to reveal the results.
   (function(){
     const root=document.getElementById('liveDash');
     if(!root)return;
@@ -84,7 +71,6 @@
       alertsEl.appendChild(d);
     }
     function resetDash(){
-      if(root.dataset.sessionDone==='1')return;
       nums.forEach(n=>{const dec=n.dataset.decimals?+n.dataset.decimals:0;n.textContent=dec?(0).toFixed(dec):'0';});
       root.querySelectorAll('.dready-bars .fill,.dbio .fill').forEach(f=>f.style.width='0%');
       ring.style.strokeDashoffset=CIRC;
@@ -95,27 +81,13 @@
       aiEl.textContent=AI_PLACEHOLDER;
       aiEl.classList.remove('ready');
     }
-    function setFinalState(){
-      nums.forEach(n=>{const dec=n.dataset.decimals?+n.dataset.decimals:0;n.textContent=dec?(+n.dataset.target).toFixed(dec):n.dataset.target;});
-      root.querySelectorAll('.dready-bars .fill').forEach(f=>f.style.width=f.dataset.target+'%');
-      ring.style.strokeDashoffset=CIRC*(1-.72);
-      readyPct.textContent='72%';
-      statusEl.classList.remove('waiting');statusEl.classList.add('active');
-      statusEl.innerHTML='<span class="sdot"></span>Active';
-      alertsEl.innerHTML='';
-      ALERTS.forEach(([ts,msg])=>addAlert(ts,msg));
-      aiEl.textContent=AI_TEXT;
-      aiEl.classList.add('ready');
-    }
 
-    if(reduce){ setFinalState(); return; }
-
-    let stopped=true, running=false, playedOnce=false;
+    let running=false, playedOnce=false;
     async function sequence(){
-      if(running||playedOnce||root.dataset.sessionDone==='1')return;
+      if(running||playedOnce)return;
       running=true;
       resetDash();
-      await sleep(900); if(stopped||root.dataset.sessionDone==='1'){running=false;return;}
+      await sleep(900);
 
       statusEl.classList.remove('waiting');statusEl.classList.add('active');
       statusEl.innerHTML='<span class="sdot"></span>Active';
@@ -124,23 +96,23 @@
         animateNum(n,+n.dataset.target,dec);
       });
       addAlert(...ALERTS[0]);
-      await sleep(650); if(stopped||root.dataset.sessionDone==='1'){running=false;return;}
+      await sleep(650);
 
       addAlert(...ALERTS[1]);
-      await sleep(900); if(stopped||root.dataset.sessionDone==='1'){running=false;return;}
+      await sleep(900);
 
       ring.style.strokeDashoffset=CIRC*(1-.72);
       animateRingPct(72,1200);
       root.querySelectorAll('.dready-bars .fill').forEach(f=>f.style.width=f.dataset.target+'%');
       root.querySelectorAll('.dready-bars .num').forEach(n=>animateNum(n,+n.dataset.target,0,1100));
-      await sleep(650); if(stopped||root.dataset.sessionDone==='1'){running=false;return;}
+      await sleep(650);
 
       addAlert(...ALERTS[2]);
-      await sleep(900); if(stopped||root.dataset.sessionDone==='1'){running=false;return;}
+      await sleep(900);
 
       // Performance bars are driven by the live session — skip fake demo scores.
       addAlert(...ALERTS[3]);
-      await sleep(900); if(stopped||root.dataset.sessionDone==='1'){running=false;return;}
+      await sleep(900);
 
       aiEl.classList.add('ready');
       aiEl.textContent=AI_TEXT;
@@ -148,34 +120,20 @@
       running=false;
     }
 
-    const dashObs=new IntersectionObserver(es=>es.forEach(e=>{
-      if(e.isIntersecting){stopped=false;sequence();}
-      else{stopped=true;}
-    }),{threshold:.25});
-    dashObs.observe(root);
-
-    addEventListener('astra:session-done',()=>{
-      stopped=true;
-      playedOnce=true;
+    if(reduce){
+      nums.forEach(n=>{const dec=n.dataset.decimals?+n.dataset.decimals:0;n.textContent=dec?(+n.dataset.target).toFixed(dec):n.dataset.target;});
+      root.querySelectorAll('.dready-bars .fill').forEach(f=>f.style.width=f.dataset.target+'%');
+      ring.style.strokeDashoffset=CIRC*(1-.72);
+      readyPct.textContent='72%';
       statusEl.classList.remove('waiting');statusEl.classList.add('active');
       statusEl.innerHTML='<span class="sdot"></span>Active';
-      aiEl.classList.add('ready');
+      ALERTS.forEach(([ts,msg])=>addAlert(ts,msg));
       aiEl.textContent=AI_TEXT;
-    });
-  })();
-
-  // app phone mockup — cycles through Calibration -> Connect Wearable -> Protocol screens
-  (function(){
-    const frame=document.querySelector('.phone-frame');
-    const scr=[...document.querySelectorAll('.app-screen')];
-    if(!frame||!scr.length||reduce)return;
-    let idx=0,timer=null,active=false;
-    function tick(){
-      scr[idx].classList.remove('active');
-      idx=(idx+1)%scr.length;
-      scr[idx].classList.add('active');
+      aiEl.classList.add('ready');
+      playedOnce=true;
+    }else{
+      new IntersectionObserver(es=>es.forEach(e=>{
+        if(e.isIntersecting)sequence();
+      }),{threshold:.25}).observe(root);
     }
-    function start(){if(active)return;active=true;timer=setInterval(tick,3400);}
-    function stop(){active=false;clearInterval(timer);}
-    new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?start():stop()),{threshold:.25}).observe(frame);
   })();
