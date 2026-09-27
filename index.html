@@ -1,528 +1,340 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ASTRA MINDCORE: Cognitive Performance Measurement Hardware</title>
-  <meta name="description"
-    content="Real-time cognitive performance measurement hardware for astronauts, pilots, and high-performance operators. Built from analog missions, validated in operational environments.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-    rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="stylesheet" href="./src/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ASTRA MINDCORE: Cognitive Performance Measurement Hardware</title>
+<meta name="description" content="Real-time cognitive performance measurement hardware for astronauts, pilots, and high-performance operators. Built from analog missions, validated in operational environments.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="stylesheet" href="/src/style.css">
 </head>
-
 <body>
 
-  <header id="hdr">
-    <div class="nav">
-      <a class="brand" href="#top">
-        <img class="logo" src="astra-assets/mindcore-icon-primary.svg" alt="ASTRA MINDCORE logo">
-        <span class="btxt"><b>ASTRA</b><span>MINDCORE</span></span>
-      </a>
-      <nav class="nav-links" id="navLinks" aria-hidden="true">
-        <a href="#solution">Technology</a>
-        <a href="#validation">Research</a>
-        <a href="#award">Award</a>
-        <a href="#env">Applications</a>
-        <a href="#product">About</a>
-        <a href="#cta">Contact</a>
-      </nav>
-      <div class="nav-right">
-        <a class="getdemo" href="#cta"><span class="d"></span>Get demo</a>
-        <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false"
-          aria-controls="navLinks">
-          <span></span><span></span><span></span>
-        </button>
+<header id="hdr">
+  <div class="nav">
+    <a class="brand" href="#top">
+      <img class="logo" src="astra-assets/mindcore-icon-primary.svg" alt="ASTRA MINDCORE logo">
+      <span class="btxt"><b>ASTRA</b><span>MINDCORE</span></span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-hidden="true">
+      <a href="#solution">Technology</a>
+      <a href="#validation">Research</a>
+      <a href="#award">Award</a>
+      <a href="#env">Applications</a>
+      <a href="#product">About</a>
+      <a href="#cta">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <a class="getdemo" href="#cta"><span class="d"></span>Get demo</a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="stars"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Cognitive Performance Measurement Hardware</span>
+      <h1>Human cognition is the next mission-critical system.</h1>
+      <p class="sub">Real-time cognitive performance measurement hardware for astronauts, pilots, and high-performance operators.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#cta">Request demo <span class="ar">&#8599;</span></a>
       </div>
     </div>
-  </header>
 
-  <!-- HERO -->
-  <section class="hero" id="top">
-    <div class="stars"></div>
-    <div class="wrap hero-grid">
-      <div>
-        <span class="eyebrow">Cognitive Performance Measurement Hardware</span>
-        <h1>Human cognition is the next mission-critical system.</h1>
-        <p class="sub">Real-time cognitive performance measurement hardware for astronauts, pilots, and high-performance
-          operators.</p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="#cta">Request demo <span class="ar">&#8599;</span></a>
+    <div class="device-stage">
+      <div class="device-glow"></div>
+      <div class="device-photo"></div>
+
+      <div class="callouts">
+        <div class="callout"><div class="ct">Designed for space</div></div>
+        <div class="callout"><div class="ct">Built from analog missions</div></div>
+        <div class="callout"><div class="ct">Validated in operational environments</div></div>
+      </div>
+      <div class="scrollcue">Scroll</div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section class="dash-sec">
+  <div class="wrap">
+    <div class="dash2 reveal" id="liveDash">
+      <div class="dash2-top">
+        <div class="dash2-brand"><img src="astra-assets/mindcore-icon-primary.svg" alt=""><b>ASTRA MINDCORE</b></div>
+        <div class="dash2-meta">SS-ABC123 <button class="dash2-connect" type="button">Connect</button></div>
+      </div>
+
+      <div class="dgrid3">
+        <div class="dcard">
+          <div class="dcard-head">Subject</div>
+          <div class="drow"><span>Session ID</span><b>ABC123</b></div>
+          <div class="drow"><span>Level</span><b>4</b></div>
+          <div class="drow"><span>Status</span><b class="status waiting" id="dStatus"><span class="sdot"></span>Waiting</b></div>
+        </div>
+
+        <div class="dcard" id="biometrics">
+          <div class="dcard-head">Biometrics</div>
+          <div class="dbio-grid">
+            <div class="dbio hr"><div class="dash-line"></div><div class="dbio-label">Heart Rate</div><div class="dbio-val"><span class="num" data-target="72">72</span><span> bpm</span></div><div class="dbio-range"><span class="rdot"></span>Normal (60-100)</div></div>
+            <div class="dbio spo2"><div class="dash-line"></div><div class="dbio-label">SpO<sub>2</sub></div><div class="dbio-val"><span class="num" data-target="98">98</span><span>%</span></div><div class="dbio-range"><span class="rdot"></span>Normal (95-100)</div></div>
+            <div class="dbio gsr"><div class="dash-line"></div><div class="dbio-label">GSR</div><div class="dbio-val"><span class="num" data-target="5.6" data-decimals="1">5.6</span><span> &micro;S</span></div><div class="dbio-range"><span class="rdot"></span>Normal (1-10)</div></div>
+          </div>
+        </div>
+
+        <div class="dcard">
+          <div class="dcard-head">Cognitive Readiness</div>
+          <div class="dready">
+            <svg class="dready-ring" viewBox="0 0 100 100" aria-hidden="true">
+              <circle class="rbg" cx="50" cy="50" r="42"/>
+              <circle class="rfg" id="readyRing" cx="50" cy="50" r="42" stroke-dasharray="264" stroke-dashoffset="264"/>
+              <text class="dready-pct" id="readyPct" x="50" y="57" text-anchor="middle">0%</text>
+            </svg>
+            <div class="dready-bars">
+              <div class="dbar-row"><div class="dbar-top"><span>Performance</span><b><span class="num" data-target="78">0</span>%</b></div><div class="track"><div class="fill perf" data-target="78"></div></div></div>
+              <div class="dbar-row"><div class="dbar-top"><span>Focus</span><b><span class="num" data-target="72">0</span>%</b></div><div class="track"><div class="fill focus" data-target="72"></div></div></div>
+              <div class="dbar-row"><div class="dbar-top"><span>Stress EF</span><b><span class="num" data-target="70">0</span>%</b></div><div class="track"><div class="fill stress" data-target="70"></div></div></div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="device-stage">
-        <div class="device-glow"></div>
-        <div class="device-photo"></div>
-
-        <div class="callouts">
-          <div class="callout">
-            <div class="ct">Designed for space</div>
+      <div class="dgrid2">
+        <div class="dcard">
+          <div class="dcard-head-row"><div class="dcard-head" style="margin-bottom:0">Performance</div><div class="dtabs"><button class="dtab active" type="button">Current</button><button class="dtab" type="button">Average</button><button class="dtab" type="button">Graph</button></div></div>
+          <div class="dperf-row" data-diff="easy">
+            <div class="dperf-top"><span class="easy-txt">Easy</span><b class="dperf-total"><span id="perf-easy-total">0</span></b></div>
+            <div class="track dperf-track"><div class="fill ok" id="perf-easy-ok"></div><div class="fill bad" id="perf-easy-bad"></div></div>
+            <div class="dperf-pct"><span class="ok" id="perf-easy-ok-pct">0% correct</span><span class="bad" id="perf-easy-bad-pct">0% incorrect</span></div>
           </div>
-          <div class="callout">
-            <div class="ct">Built from analog missions</div>
+          <div class="dperf-row" data-diff="medium">
+            <div class="dperf-top"><span class="medium-txt">Medium</span><b class="dperf-total"><span id="perf-medium-total">0</span></b></div>
+            <div class="track dperf-track"><div class="fill ok" id="perf-medium-ok"></div><div class="fill bad" id="perf-medium-bad"></div></div>
+            <div class="dperf-pct"><span class="ok" id="perf-medium-ok-pct">0% correct</span><span class="bad" id="perf-medium-bad-pct">0% incorrect</span></div>
           </div>
-          <div class="callout">
-            <div class="ct">Validated in operational environments</div>
+          <div class="dperf-row" data-diff="hard">
+            <div class="dperf-top"><span class="hard-txt">Hard</span><b class="dperf-total"><span id="perf-hard-total">0</span></b></div>
+            <div class="track dperf-track"><div class="fill ok" id="perf-hard-ok"></div><div class="fill bad" id="perf-hard-bad"></div></div>
+            <div class="dperf-pct"><span class="ok" id="perf-hard-ok-pct">0% correct</span><span class="bad" id="perf-hard-bad-pct">0% incorrect</span></div>
           </div>
         </div>
-        <div class="scrollcue">Scroll</div>
+        <div class="dcard dcard-alerts">
+          <div class="dcard-head">Alerts</div>
+          <div class="dalerts" id="dAlerts"></div>
+        </div>
+      </div>
+
+      <div class="dcard dai">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2 2M16.4 16.4l2 2M5.6 18.4l2-2M16.4 7.6l2-2"/></svg>
+        <p id="dAI">AI analysis will appear here after session completes&hellip;</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- DASHBOARD -->
-  <section class="dash-sec">
-    <div class="wrap">
-      <div class="dash2 reveal" id="liveDash">
-        <div class="dash2-top">
-          <div class="dash2-brand"><img src="astra-assets/mindcore-icon-primary.svg" alt=""><b>ASTRA MINDCORE</b></div>
-          <div class="dash2-meta">SS-ABC123 <button class="dash2-connect" type="button">Connect</button></div>
-        </div>
-
-        <div class="dgrid3">
-          <div class="dcard">
-            <div class="dcard-head">Subject</div>
-            <div class="drow"><span>Session ID</span><b>ABC123</b></div>
-            <div class="drow"><span>Level</span><b>4</b></div>
-            <div class="drow"><span>Status</span><b class="status waiting" id="dStatus"><span
-                  class="sdot"></span>Waiting</b></div>
-          </div>
-
-          <div class="dcard">
-            <div class="dcard-head">Biometrics</div>
-            <div class="dbio-grid">
-              <div class="dbio hr">
-                <div class="dash-line"></div>
-                <div class="dbio-label">Heart Rate</div>
-                <div class="dbio-val"><span class="num" data-target="72">72</span><span> bpm</span></div>
-                <div class="dbio-range"><span class="rdot"></span>Normal (60-100)</div>
-              </div>
-              <div class="dbio spo2">
-                <div class="dash-line"></div>
-                <div class="dbio-label">SpO<sub>2</sub></div>
-                <div class="dbio-val"><span class="num" data-target="98">98</span><span>%</span></div>
-                <div class="dbio-range"><span class="rdot"></span>Normal (95-100)</div>
-              </div>
-              <div class="dbio gsr">
-                <div class="dash-line"></div>
-                <div class="dbio-label">GSR</div>
-                <div class="dbio-val"><span class="num" data-target="5.6" data-decimals="1">5.6</span><span>
-                    &micro;S</span></div>
-                <div class="dbio-range"><span class="rdot"></span>Normal (1-10)</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="dcard">
-            <div class="dcard-head">Cognitive Readiness</div>
-            <div class="dready">
-              <svg class="dready-ring" viewBox="0 0 100 100" aria-hidden="true">
-                <circle class="rbg" cx="50" cy="50" r="42" />
-                <circle class="rfg" id="readyRing" cx="50" cy="50" r="42" stroke-dasharray="264"
-                  stroke-dashoffset="264" />
-                <text class="dready-pct" id="readyPct" x="50" y="57" text-anchor="middle">0%</text>
-              </svg>
-              <div class="dready-bars">
-                <div class="dbar-row">
-                  <div class="dbar-top"><span>Performance</span><b><span class="num" data-target="78">0</span>%</b>
-                  </div>
-                  <div class="track">
-                    <div class="fill perf" data-target="78"></div>
-                  </div>
-                </div>
-                <div class="dbar-row">
-                  <div class="dbar-top"><span>Focus</span><b><span class="num" data-target="72">0</span>%</b></div>
-                  <div class="track">
-                    <div class="fill focus" data-target="72"></div>
-                  </div>
-                </div>
-                <div class="dbar-row">
-                  <div class="dbar-top"><span>Stress EF</span><b><span class="num" data-target="70">0</span>%</b></div>
-                  <div class="track">
-                    <div class="fill stress" data-target="70"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="dgrid2">
-          <div class="dcard">
-            <div class="dcard-head-row">
-              <div class="dcard-head" style="margin-bottom:0">Performance</div>
-              <div class="dtabs"><button class="dtab active" type="button">Current</button><button class="dtab"
-                  type="button">Average</button><button class="dtab" type="button">Graph</button></div>
-            </div>
-            <div class="dperf-row">
-              <div class="dperf-top"><span class="easy-txt">Easy</span><b><span class="num"
-                    data-target="21">0</span></b></div>
-              <div class="track">
-                <div class="fill easy" data-target="90"></div>
-              </div>
-            </div>
-            <div class="dperf-row">
-              <div class="dperf-top"><span class="medium-txt">Medium</span><b><span class="num"
-                    data-target="14">0</span></b></div>
-              <div class="track">
-                <div class="fill medium" data-target="60"></div>
-              </div>
-            </div>
-            <div class="dperf-row">
-              <div class="dperf-top"><span class="hard-txt">Hard</span><b><span class="num"
-                    data-target="10">0</span></b></div>
-              <div class="track">
-                <div class="fill hard" data-target="42"></div>
-              </div>
-            </div>
-          </div>
-          <div class="dcard dcard-alerts">
-            <div class="dcard-head">Alerts</div>
-            <div class="dalerts" id="dAlerts"></div>
-          </div>
-        </div>
-
-        <div class="dcard dai">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-            <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2 2M16.4 16.4l2 2M5.6 18.4l2-2M16.4 7.6l2-2" />
-          </svg>
-          <p id="dAI">AI analysis will appear here after session completes&hellip;</p>
-        </div>
+<!-- AWARD -->
+<section class="blk award" id="award">
+  <div class="wrap award-grid">
+    <div class="reveal">
+      <span class="eyebrow">Recognition</span>
+      <h2 style="margin-top:14px">1st Place, Starter Track at Seaside Startup Summit 2026.</h2>
+      <p class="sub" style="margin:16px 0 0;max-width:46ch">ASTRA MINDCORE took 1st place in the Starter Final Battle at SSS26, awarded live on stage by FastBank.</p>
+      <div class="award-stats">
+        <div class="as"><b>#1</b><span>Starter Track</span></div>
+        <div class="as"><b>$8,000</b><span>Non-dilutive Prize</span></div>
+        <div class="as"><b>SSS26</b><span>Seaside Startup Summit</span></div>
       </div>
     </div>
-  </section>
+    <div class="award-photo reveal">
+      <img src="astra-assets/award-sss26.jpg" alt="Hanna Harutyunyan accepting the 1st place Starter Track award for ASTRA MINDCORE at Seaside Startup Summit 2026, presented by FastBank">
+    </div>
+  </div>
+</section>
 
-  <!-- AWARD -->
-  <section class="blk award" id="award">
-    <div class="wrap award-grid">
+<!-- PROBLEM -->
+<section class="blk problem" id="problem">
+  <div class="wrap">
+    <div class="prob-top reveal">
+      <div class="sec-head"><h2>The most dangerous failures are invisible.</h2></div>
+      <div class="prob-cards">
+        <div class="prob-card"><h4>Cognitive Overload</h4><p>Mission-critical decisions degrade before operators notice.</p></div>
+        <div class="prob-card"><h4>Fatigue</h4><p>Hours of performance lost before measurable physical symptoms.</p></div>
+        <div class="prob-card"><h4>Human Error</h4><p>The leading cause of incidents in high-risk environments.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="blk" id="solution">
+  <div class="wrap">
+    <div class="sol-top">
+      <div class="sec-head reveal"><h2>A platform that measures, understands, and improves cognitive performance.</h2></div>
+      <div class="pipe reveal">
+        <div class="node"><div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2 6 4-14 2 8h4l2 4h2"/></svg></div><h4>Mental Math Performance + Biosignals</h4><p>Performance and physiological signals captured during the test</p></div>
+        <div class="node"><div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4 4 0 0 1-.6-7.96 5.5 5.5 0 0 1 10.6-1.94A4.5 4.5 0 0 1 17.5 17"/><path d="M12 11v8M9 16.5 12 19l3-2.5"/></svg></div><h4>Off-Device Uplink</h4><p>Encrypted transmission with no processing on the wearable</p></div>
+        <div class="node"><div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><circle cx="5" cy="6" r="1.6"/><circle cx="19" cy="6" r="1.6"/><circle cx="5" cy="18" r="1.6"/><circle cx="19" cy="18" r="1.6"/><path d="M6.4 7 10 10.5M17.6 7 14 10.5M6.4 17 10 13.5M17.6 17 14 13.5"/></svg></div><h4>Behavioral Analysis</h4><p>Server-side ML scores fatigue, load &amp; attention in real time</p></div>
+        <div class="node key"><div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/></svg></div><h4>Cognitive Index</h4><p>One unified readiness score</p></div>
+        <div class="node"><div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.2"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></svg></div><h4>Decision-Maker Alert</h4><p>Delivered to the decision-maker for high-stress environments</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT -->
+<section class="blk product" id="product">
+  <div class="wrap">
+    <div class="prod-grid">
       <div class="reveal">
-        <span class="eyebrow">Recognition</span>
-        <h2 style="margin-top:14px">1st Place, Starter Track at Seaside Startup Summit 2026.</h2>
-        <p class="sub" style="margin:16px 0 0;max-width:46ch">ASTRA MINDCORE took 1st place in the Starter Final Battle
-          at SSS26, awarded live on stage by FastBank.</p>
-        <div class="award-stats">
-          <div class="as"><b>#1</b><span>Starter Track</span></div>
-          <div class="as"><b>$8,000</b><span>Non-dilutive Prize</span></div>
-          <div class="as"><b>SSS26</b><span>Seaside Startup Summit</span></div>
-        </div>
+        <h2>One app. From calibration to cognitive index.</h2>
+        <p class="sub" style="margin:14px 0 0;max-width:40ch">The companion app guides every session: pairing the wearable, running the protocol, and turning results into a readiness score.</p>
+        <ul class="prod-list">
+          <li>Guided pre-flight calibration</li>
+          <li>One-tap wearable pairing</li>
+          <li>Adaptive Easy / Medium / Hard protocol</li>
+          <li>Live biometric overlay during testing</li>
+          <li>Instant cognitive index &amp; session history</li>
+        </ul>
       </div>
-      <div class="award-photo reveal">
-        <img src="astra-assets/award-sss26.jpg"
-          alt="Hanna Harutyunyan accepting the 1st place Starter Track award for ASTRA MINDCORE at Seaside Startup Summit 2026, presented by FastBank">
-      </div>
-    </div>
-  </section>
+      <div class="prod-device reveal">
+        <div class="g"></div>
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="app-screen active" id="scr1">
+              <img class="as-logo" src="astra-assets/mindcore-icon-primary.svg" alt="">
+              <div class="as-title">ASTRA MINDCORE</div>
+              <div class="as-sub">Pre-flight Cognitive Calibration</div>
+              <div class="as-label">Astronaut ID</div>
+              <div class="as-input">Enter Call Sign</div>
+              <div class="as-label">Training Phase</div>
+              <div class="as-input">Preflight Cognitive Calibration</div>
+              <div class="as-btn">Initiate Sequence</div>
+              <div class="as-row2"><div>Settings</div><div>Researcher View</div></div>
+              <div class="as-dots"><span class="on"></span><span></span><span></span></div>
+            </div>
 
-  <!-- PROBLEM -->
-  <section class="blk problem" id="problem">
-    <div class="wrap">
-      <div class="prob-top reveal">
-        <div class="sec-head">
-          <h2>The most dangerous failures are invisible.</h2>
-        </div>
-        <div class="prob-cards">
-          <div class="prob-card">
-            <h4>Cognitive Overload</h4>
-            <p>Mission-critical decisions degrade before operators notice.</p>
-          </div>
-          <div class="prob-card">
-            <h4>Fatigue</h4>
-            <p>Hours of performance lost before measurable physical symptoms.</p>
-          </div>
-          <div class="prob-card">
-            <h4>Human Error</h4>
-            <p>The leading cause of incidents in high-risk environments.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SOLUTION -->
-  <section class="blk" id="solution">
-    <div class="wrap">
-      <div class="sol-top">
-        <div class="sec-head reveal">
-          <h2>A platform that measures, understands, and improves cognitive performance.</h2>
-        </div>
-        <div class="pipe reveal">
-          <div class="node">
-            <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M2 12h4l2 6 4-14 2 8h4l2 4h2" />
-              </svg></div>
-            <h4>Mental Math Performance + Biosignals</h4>
-            <p>Performance and physiological signals captured during the test</p>
-          </div>
-          <div class="node">
-            <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M7 18a4 4 0 0 1-.6-7.96 5.5 5.5 0 0 1 10.6-1.94A4.5 4.5 0 0 1 17.5 17" />
-                <path d="M12 11v8M9 16.5 12 19l3-2.5" />
-              </svg></div>
-            <h4>Off-Device Uplink</h4>
-            <p>Encrypted transmission with no processing on the wearable</p>
-          </div>
-          <div class="node">
-            <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="2.5" />
-                <circle cx="5" cy="6" r="1.6" />
-                <circle cx="19" cy="6" r="1.6" />
-                <circle cx="5" cy="18" r="1.6" />
-                <circle cx="19" cy="18" r="1.6" />
-                <path d="M6.4 7 10 10.5M17.6 7 14 10.5M6.4 17 10 13.5M17.6 17 14 13.5" />
-              </svg></div>
-            <h4>Behavioral Analysis</h4>
-            <p>Server-side ML scores fatigue, load &amp; attention in real time</p>
-          </div>
-          <div class="node key">
-            <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="8" />
-                <circle cx="12" cy="12" r="2" />
-                <path d="M12 4v3M12 17v3M4 12h3M17 12h3" />
-              </svg></div>
-            <h4>Cognitive Index</h4>
-            <p>One unified readiness score</p>
-          </div>
-          <div class="node">
-            <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="8" r="3.2" />
-                <path d="M5.5 20a6.5 6.5 0 0 1 13 0" />
-              </svg></div>
-            <h4>Decision-Maker Alert</h4>
-            <p>Delivered to the decision-maker for high-stress environments</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRODUCT -->
-  <section class="blk product" id="product">
-    <div class="wrap">
-      <div class="prod-grid">
-        <div class="reveal">
-          <h2>One app. From calibration to cognitive index.</h2>
-          <p class="sub" style="margin:14px 0 0;max-width:40ch">The companion app guides every session: pairing the
-            wearable, running the protocol, and turning results into a readiness score.</p>
-          <ul class="prod-list">
-            <li>Guided pre-flight calibration</li>
-            <li>One-tap wearable pairing</li>
-            <li>Adaptive Easy / Medium / Hard protocol</li>
-            <li>Live biometric overlay during testing</li>
-            <li>Instant cognitive index &amp; session history</li>
-          </ul>
-        </div>
-        <div class="prod-device reveal">
-          <div class="g"></div>
-          <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <div class="phone-screen">
-              <div class="app-screen active" id="scr1">
-                <img class="as-logo" src="astra-assets/mindcore-icon-primary.svg" alt="">
-                <div class="as-title">ASTRA MINDCORE</div>
-                <div class="as-sub">Pre-flight Cognitive Calibration</div>
-                <div class="as-label">Astronaut ID</div>
-                <div class="as-input">Enter Call Sign</div>
-                <div class="as-label">Training Phase</div>
-                <div class="as-input">Preflight Cognitive Calibration</div>
-                <div class="as-btn">Initiate Sequence</div>
-                <div class="as-row2">
-                  <div>Settings</div>
-                  <div>Researcher View</div>
-                </div>
-                <div class="as-dots"><span class="on"></span><span></span><span></span></div>
+            <div class="app-screen" id="scr2">
+              <div class="as-eyebrow">Biometric Setup</div>
+              <div class="as-h">Connect Your Wearable</div>
+              <div class="as-p">Real-time monitoring during cognitive assessment</div>
+              <div class="as-label">Select Device</div>
+              <div class="as-devgrid">
+                <div class="as-dev"><b>Xiaomi Band 9</b><span style="color:var(--orange)">HR Broadcast</span></div>
+                <div class="as-dev"><b>Garmin Watch</b><span style="color:#4ea8ff">BLE HRM</span></div>
+                <div class="as-dev"><b>Apple Watch</b><span style="color:#f2c14e">Limited</span></div>
+                <div class="as-dev"><b>Manual Entry</b><span style="color:var(--muted)">No Device</span></div>
               </div>
+              <div class="as-hint"><i></i>Select a device type above</div>
+              <div class="as-btn">Launch Mission &rarr;</div>
+              <div class="as-link">Continue with simulated data</div>
+            </div>
 
-              <div class="app-screen" id="scr2">
-                <div class="as-eyebrow">Biometric Setup</div>
-                <div class="as-h">Connect Your Wearable</div>
-                <div class="as-p">Real-time monitoring during cognitive assessment</div>
-                <div class="as-label">Select Device</div>
-                <div class="as-devgrid">
-                  <div class="as-dev"><b>Xiaomi Band 9</b><span style="color:var(--orange)">HR Broadcast</span></div>
-                  <div class="as-dev"><b>Garmin Watch</b><span style="color:#4ea8ff">BLE HRM</span></div>
-                  <div class="as-dev"><b>Apple Watch</b><span style="color:#f2c14e">Limited</span></div>
-                  <div class="as-dev"><b>Manual Entry</b><span style="color:var(--muted)">No Device</span></div>
-                </div>
-                <div class="as-hint"><i></i>Select a device type above</div>
-                <div class="as-btn">Launch Mission &rarr;</div>
-                <div class="as-link">Continue with simulated data</div>
+            <div class="app-screen" id="scr3">
+              <div class="as-tabs"><span class="on">Easy</span><span>&rsaquo;</span><span>Med</span><span>&rsaquo;</span><span>Hard</span></div>
+              <div class="as-tabline"></div>
+              <div class="as-chips">
+                <div class="as-chip" style="color:#ff5577">&hearts; 72 bpm</div>
+                <div class="as-chip" style="color:#4ea8ff">SpO&#8322; 98%</div>
+                <div class="as-chip" style="color:#f2c14e">BP 12/71</div>
+                <div class="as-chip" style="color:var(--green)">SIG: NOTR4</div>
               </div>
-
-              <div class="app-screen" id="scr3">
-                <div class="as-tabs"><span
-                    class="on">Easy</span><span>&rsaquo;</span><span>Med</span><span>&rsaquo;</span><span>Hard</span>
-                </div>
-                <div class="as-tabline"></div>
-                <div class="as-chips">
-                  <div class="as-chip" style="color:#ff5577">&hearts; 72 bpm</div>
-                  <div class="as-chip" style="color:#4ea8ff">SpO&#8322; 98%</div>
-                  <div class="as-chip" style="color:#f2c14e">BP 12/71</div>
-                  <div class="as-chip" style="color:var(--green)">SIG: NOTR4</div>
-                </div>
-                <div class="as-eq">
-                  <div class="as-eq-label">Easy Protocol</div>
-                  <div class="as-timer">01:56</div>
-                </div>
-                <div class="as-problem">2 &times; 9</div>
-                <div class="as-answer"></div>
-                <div class="as-kmode">
-                  <div>Keypad</div>
-                  <div>Voice Comms</div>
-                </div>
-                <div class="as-keypad">
-                  <div class="as-key">1</div>
-                  <div class="as-key">2</div>
-                  <div class="as-key">3</div>
-                  <div class="as-key">4</div>
-                  <div class="as-key">5</div>
-                  <div class="as-key">6</div>
-                  <div class="as-key">7</div>
-                  <div class="as-key">8</div>
-                  <div class="as-key">9</div>
-                  <div class="as-key">-</div>
-                  <div class="as-key">0</div>
-                  <div class="as-key">C</div>
-                </div>
-                <div class="as-bottom">
-                  <div>Skip</div>
-                  <div>Enter</div>
-                </div>
+              <div class="as-eq">
+                <div class="as-eq-label">Easy Protocol</div>
+                <div class="as-timer">01:56</div>
               </div>
+              <div class="as-problem">2 &times; 9</div>
+              <div class="as-answer"></div>
+              <div class="as-kmode"><div>Keypad</div><div>Voice Comms</div></div>
+              <div class="as-keypad">
+                <div class="as-key">1</div><div class="as-key">2</div><div class="as-key">3</div>
+                <div class="as-key">4</div><div class="as-key">5</div><div class="as-key">6</div>
+                <div class="as-key">7</div><div class="as-key">8</div><div class="as-key">9</div>
+                <div class="as-key">-</div><div class="as-key">0</div><div class="as-key">C</div>
+              </div>
+              <div class="as-bottom"><div>Skip</div><div>Enter</div></div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- VALIDATION -->
-  <section class="blk" id="validation">
-    <div class="wrap">
-      <div class="val-top">
-        <div class="reveal">
-          <span class="eyebrow">Validated in Analog Missions</span>
-          <h2 style="margin-top:14px">Personally tested across 30 days in 2 lunar analog missions.</h2>
-          <a class="btn btn-ghost" style="margin-top:26px"
-            href="https://www.interpersonalskillslab.ch/en/news-2/astromentalhealth/" target="_blank"
-            rel="noopener">Supported by NineCubes <span class="ar">&#8599;</span></a>
-        </div>
-        <div class="val-cards reveal">
-          <div class="val-card">
-            <div class="val-img photo" style="background-image:url('astra-assets/asclepios.jpg')"><span
-                class="yr">2025</span></div>
-            <div class="val-body">
-              <h4>ASCLEPIOS</h4>
-              <p>Sasso San Gottardo, Switzerland</p>
-            </div>
-          </div>
-          <div class="val-card">
-            <div class="val-img photo" style="background-image:url('astra-assets/lunares.jpg')"><span
-                class="yr">2025</span></div>
-            <div class="val-body">
-              <h4>LUNARES</h4>
-              <p>Piła, Poland</p>
-            </div>
-          </div>
-        </div>
+<!-- VALIDATION -->
+<section class="blk" id="validation">
+  <div class="wrap">
+    <div class="val-top">
+      <div class="reveal">
+        <span class="eyebrow">Validated in Analog Missions</span>
+        <h2 style="margin-top:14px">Personally tested across 30 days in 2 lunar analog missions.</h2>
+        <a class="btn btn-ghost" style="margin-top:26px" href="https://www.interpersonalskillslab.ch/en/news-2/astromentalhealth/" target="_blank" rel="noopener">Supported by NineCubes <span class="ar">&#8599;</span></a>
+      </div>
+      <div class="val-cards reveal">
+        <div class="val-card"><div class="val-img photo" style="background-image:url('astra-assets/asclepios.jpg')"><span class="yr">2025</span></div><div class="val-body"><h4>ASCLEPIOS</h4><p>Sasso San Gottardo, Switzerland</p></div></div>
+        <div class="val-card"><div class="val-img photo" style="background-image:url('astra-assets/lunares.jpg')"><span class="yr">2025</span></div><div class="val-body"><h4>LUNARES</h4><p>Piła, Poland</p></div></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ENVIRONMENTS -->
-  <section class="blk env" id="env">
-    <div class="wrap">
-      <div class="sec-head reveal"><span class="eyebrow">Built for High-Stakes Environments</span>
-        <h2 style="margin-top:14px">One platform. Multiple operational environments.</h2>
-      </div>
-      <div class="env-grid">
-        <div class="env-card reveal">
-          <div class="env-photo" style="background-image:url('astra-assets/env-spaceflight.jpg')"></div>
-          <h4>Spaceflight</h4>
-          <p>Astronauts &amp; mission-critical operations</p>
-        </div>
-        <div class="env-card reveal">
-          <div class="env-photo" style="background-image:url('astra-assets/env-aviation.jpg')"></div>
-          <h4>Aviation</h4>
-          <p>Pilots &amp; crew performance management</p>
-        </div>
-        <div class="env-card reveal">
-          <div class="env-photo" style="background-image:url('astra-assets/env-motorsport.jpg')"></div>
-          <h4>Motorsport</h4>
-          <p>Elite drivers &amp; racing teams</p>
-        </div>
-        <div class="env-card reveal">
-          <div class="env-photo" style="background-image:url('astra-assets/env-mining.jpg')"></div>
-          <h4>Mining</h4>
-          <p>Operators in fatigue-intensive shifts</p>
-        </div>
-        <div class="env-card reveal">
-          <div class="env-photo" style="background-image:url('astra-assets/env-energy.jpg')"></div>
-          <h4>Energy</h4>
-          <p>Control rooms &amp; critical infrastructure</p>
-        </div>
-      </div>
+<!-- ENVIRONMENTS -->
+<section class="blk env" id="env">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">Built for High-Stakes Environments</span><h2 style="margin-top:14px">One platform. Multiple operational environments.</h2></div>
+    <div class="env-grid">
+      <div class="env-card reveal"><div class="env-photo" style="background-image:url('astra-assets/env-spaceflight.jpg')"></div><h4>Spaceflight</h4><p>Astronauts &amp; mission-critical operations</p></div>
+      <div class="env-card reveal"><div class="env-photo" style="background-image:url('astra-assets/env-aviation.jpg')"></div><h4>Aviation</h4><p>Pilots &amp; crew performance management</p></div>
+      <div class="env-card reveal"><div class="env-photo" style="background-image:url('astra-assets/env-motorsport.jpg')"></div><h4>Motorsport</h4><p>Elite drivers &amp; racing teams</p></div>
+      <div class="env-card reveal"><div class="env-photo" style="background-image:url('astra-assets/env-mining.jpg')"></div><h4>Mining</h4><p>Operators in fatigue-intensive shifts</p></div>
+      <div class="env-card reveal"><div class="env-photo" style="background-image:url('astra-assets/env-energy.jpg')"></div><h4>Energy</h4><p>Control rooms &amp; critical infrastructure</p></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CTA -->
-  <section class="cta-sec" id="cta">
-    <div class="wrap">
-      <div class="cta reveal">
-        <svg class="wave" viewBox="0 0 1200 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true">
-          <path
-            d="M0.0,66.6 L13.3,65.8 L26.7,68.7 L40.0,47.1 L53.3,65.8 L66.7,69.3 L80.0,66.3 L93.3,71.2 L106.7,70.8 L120.0,74.7 L133.3,43.5 L146.7,66.3 L160.0,73.1 L173.3,70.8 L186.7,68.7 L200.0,65.7 L213.3,40.7 L226.7,72.7 L240.0,74.1 L253.3,67.5 L266.7,72.7 L280.0,68.0 L293.3,68.5 L306.7,71.1 L320.0,94.7 L333.3,74.2 L346.7,74.5 L360.0,97.2 L373.3,70.0 L386.7,65.8 L400.0,67.7 L413.3,65.7 L426.7,68.1 L440.0,71.8 L453.3,72.1 L466.7,68.5 L480.0,68.6 L493.3,69.9 L506.7,67.9 L520.0,69.0 L533.3,70.0 L546.7,69.0 L560.0,66.4 L573.3,70.5 L586.7,74.8 L600.0,68.8 L613.3,65.9 L626.7,71.6 L640.0,43.9 L653.3,99.9 L666.7,68.2 L680.0,73.5 L693.3,71.5 L706.7,69.6 L720.0,74.4 L733.3,70.6 L746.7,69.0 L760.0,69.0 L773.3,74.7 L786.7,66.2 L800.0,66.1 L813.3,70.4 L826.7,71.1 L840.0,39.0 L853.3,67.6 L866.7,68.7 L880.0,73.4 L893.3,69.7 L906.7,65.9 L920.0,68.5 L933.3,73.2 L946.7,65.3 L960.0,70.3 L973.3,70.4 L986.7,106.1 L1000.0,71.9 L1013.3,68.7 L1026.7,72.7 L1040.0,72.7 L1053.3,67.3 L1066.7,74.8 L1080.0,73.0 L1093.3,72.4 L1106.7,70.2 L1120.0,65.4 L1133.3,99.0 L1146.7,71.0 L1160.0,73.0 L1173.3,68.5 L1186.7,65.9 L1200.0,69.7"
-            fill="none" stroke="#ff4f00" stroke-width="1.1" opacity=".5" />
-          <path
-            d="M0.0,149.9 L13.3,150.8 L26.7,174.0 L40.0,151.1 L53.3,152.0 L66.7,149.8 L80.0,152.0 L93.3,152.1 L106.7,149.3 L120.0,153.1 L133.3,147.7 L146.7,147.6 L160.0,152.1 L173.3,152.3 L186.7,151.1 L200.0,150.3 L213.3,146.6 L226.7,151.0 L240.0,153.0 L253.3,152.6 L266.7,148.0 L280.0,148.6 L293.3,150.6 L306.7,149.4 L320.0,152.9 L333.3,149.7 L346.7,152.8 L360.0,152.9 L373.3,150.2 L386.7,146.6 L400.0,147.8 L413.3,132.3 L426.7,151.6 L440.0,148.8 L453.3,150.4 L466.7,147.2 L480.0,148.2 L493.3,151.9 L506.7,150.4 L520.0,152.9 L533.3,150.8 L546.7,150.1 L560.0,149.7 L573.3,149.8 L586.7,151.4 L600.0,153.1 L613.3,150.4 L626.7,152.4 L640.0,147.4 L653.3,147.0 L666.7,147.0 L680.0,152.0 L693.3,147.6 L706.7,151.1 L720.0,152.7 L733.3,148.0 L746.7,149.3 L760.0,153.4 L773.3,147.6 L786.7,150.1 L800.0,147.9 L813.3,151.6 L826.7,170.4 L840.0,171.2 L853.3,153.2 L866.7,152.9 L880.0,152.6 L893.3,148.4 L906.7,147.8 L920.0,152.2 L933.3,151.2 L946.7,149.3 L960.0,150.1 L973.3,148.8 L986.7,152.1 L1000.0,152.8 L1013.3,146.6 L1026.7,148.3 L1040.0,148.1 L1053.3,147.4 L1066.7,175.3 L1080.0,147.4 L1093.3,148.2 L1106.7,147.6 L1120.0,124.7 L1133.3,150.2 L1146.7,149.6 L1160.0,148.4 L1173.3,153.5 L1186.7,126.7 L1200.0,147.8"
-            fill="none" stroke="#6a6a72" stroke-width="1" opacity=".4" />
-          <path
-            d="M0.0,233.7 L13.3,232.7 L26.7,230.0 L40.0,229.1 L53.3,231.6 L66.7,228.7 L80.0,231.7 L93.3,229.2 L106.7,226.3 L120.0,226.4 L133.3,227.9 L146.7,226.5 L160.0,233.1 L173.3,228.2 L186.7,228.3 L200.0,227.1 L213.3,228.0 L226.7,234.0 L240.0,227.9 L253.3,228.4 L266.7,225.8 L280.0,229.8 L293.3,227.5 L306.7,225.8 L320.0,226.6 L333.3,226.2 L346.7,256.8 L360.0,233.8 L373.3,227.1 L386.7,232.4 L400.0,232.2 L413.3,230.0 L426.7,231.0 L440.0,232.7 L453.3,230.1 L466.7,231.7 L480.0,233.4 L493.3,230.6 L506.7,225.9 L520.0,232.5 L533.3,233.8 L546.7,226.5 L560.0,260.7 L573.3,229.6 L586.7,203.3 L600.0,229.9 L613.3,201.8 L626.7,230.3 L640.0,226.4 L653.3,227.9 L666.7,228.0 L680.0,227.5 L693.3,234.0 L706.7,229.0 L720.0,231.5 L733.3,231.0 L746.7,226.5 L760.0,227.9 L773.3,228.4 L786.7,225.9 L800.0,260.9 L813.3,227.6 L826.7,231.8 L840.0,229.7 L853.3,234.1 L866.7,228.4 L880.0,229.8 L893.3,226.4 L906.7,234.2 L920.0,229.0 L933.3,233.6 L946.7,226.6 L960.0,228.0 L973.3,230.9 L986.7,228.1 L1000.0,228.9 L1013.3,233.2 L1026.7,227.1 L1040.0,231.5 L1053.3,231.9 L1066.7,229.0 L1080.0,228.6 L1093.3,228.6 L1106.7,233.7 L1120.0,225.9 L1133.3,227.9 L1146.7,261.2 L1160.0,228.8 L1173.3,228.1 L1186.7,210.2 L1200.0,231.1"
-            fill="none" stroke="#4ec98f" stroke-width="1" opacity=".3" />
-        </svg>
-        <div>
-          <h2>Build the Future of Human Performance.</h2>
-          <p class="ctxt">Join us in creating the cognitive performance measurement standard for high-stress
-            environments.</p>
-        </div>
-        <div class="cta-right">
-          <a class="btn btn-primary" href="mailto:hannasav.me@gmail.com">Request a demo <span
-              class="ar">&#8599;</span></a>
-          <div class="contact">Or contact us at <a href="mailto:hannasav.me@gmail.com">hannasav.me@gmail.com</a></div>
-        </div>
+<!-- CTA -->
+<section class="cta-sec" id="cta">
+  <div class="wrap">
+    <div class="cta reveal">
+      <svg class="wave" viewBox="0 0 1200 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M0.0,66.6 L13.3,65.8 L26.7,68.7 L40.0,47.1 L53.3,65.8 L66.7,69.3 L80.0,66.3 L93.3,71.2 L106.7,70.8 L120.0,74.7 L133.3,43.5 L146.7,66.3 L160.0,73.1 L173.3,70.8 L186.7,68.7 L200.0,65.7 L213.3,40.7 L226.7,72.7 L240.0,74.1 L253.3,67.5 L266.7,72.7 L280.0,68.0 L293.3,68.5 L306.7,71.1 L320.0,94.7 L333.3,74.2 L346.7,74.5 L360.0,97.2 L373.3,70.0 L386.7,65.8 L400.0,67.7 L413.3,65.7 L426.7,68.1 L440.0,71.8 L453.3,72.1 L466.7,68.5 L480.0,68.6 L493.3,69.9 L506.7,67.9 L520.0,69.0 L533.3,70.0 L546.7,69.0 L560.0,66.4 L573.3,70.5 L586.7,74.8 L600.0,68.8 L613.3,65.9 L626.7,71.6 L640.0,43.9 L653.3,99.9 L666.7,68.2 L680.0,73.5 L693.3,71.5 L706.7,69.6 L720.0,74.4 L733.3,70.6 L746.7,69.0 L760.0,69.0 L773.3,74.7 L786.7,66.2 L800.0,66.1 L813.3,70.4 L826.7,71.1 L840.0,39.0 L853.3,67.6 L866.7,68.7 L880.0,73.4 L893.3,69.7 L906.7,65.9 L920.0,68.5 L933.3,73.2 L946.7,65.3 L960.0,70.3 L973.3,70.4 L986.7,106.1 L1000.0,71.9 L1013.3,68.7 L1026.7,72.7 L1040.0,72.7 L1053.3,67.3 L1066.7,74.8 L1080.0,73.0 L1093.3,72.4 L1106.7,70.2 L1120.0,65.4 L1133.3,99.0 L1146.7,71.0 L1160.0,73.0 L1173.3,68.5 L1186.7,65.9 L1200.0,69.7" fill="none" stroke="#ff4f00" stroke-width="1.1" opacity=".5"/>
+        <path d="M0.0,149.9 L13.3,150.8 L26.7,174.0 L40.0,151.1 L53.3,152.0 L66.7,149.8 L80.0,152.0 L93.3,152.1 L106.7,149.3 L120.0,153.1 L133.3,147.7 L146.7,147.6 L160.0,152.1 L173.3,152.3 L186.7,151.1 L200.0,150.3 L213.3,146.6 L226.7,151.0 L240.0,153.0 L253.3,152.6 L266.7,148.0 L280.0,148.6 L293.3,150.6 L306.7,149.4 L320.0,152.9 L333.3,149.7 L346.7,152.8 L360.0,152.9 L373.3,150.2 L386.7,146.6 L400.0,147.8 L413.3,132.3 L426.7,151.6 L440.0,148.8 L453.3,150.4 L466.7,147.2 L480.0,148.2 L493.3,151.9 L506.7,150.4 L520.0,152.9 L533.3,150.8 L546.7,150.1 L560.0,149.7 L573.3,149.8 L586.7,151.4 L600.0,153.1 L613.3,150.4 L626.7,152.4 L640.0,147.4 L653.3,147.0 L666.7,147.0 L680.0,152.0 L693.3,147.6 L706.7,151.1 L720.0,152.7 L733.3,148.0 L746.7,149.3 L760.0,153.4 L773.3,147.6 L786.7,150.1 L800.0,147.9 L813.3,151.6 L826.7,170.4 L840.0,171.2 L853.3,153.2 L866.7,152.9 L880.0,152.6 L893.3,148.4 L906.7,147.8 L920.0,152.2 L933.3,151.2 L946.7,149.3 L960.0,150.1 L973.3,148.8 L986.7,152.1 L1000.0,152.8 L1013.3,146.6 L1026.7,148.3 L1040.0,148.1 L1053.3,147.4 L1066.7,175.3 L1080.0,147.4 L1093.3,148.2 L1106.7,147.6 L1120.0,124.7 L1133.3,150.2 L1146.7,149.6 L1160.0,148.4 L1173.3,153.5 L1186.7,126.7 L1200.0,147.8" fill="none" stroke="#6a6a72" stroke-width="1" opacity=".4"/>
+        <path d="M0.0,233.7 L13.3,232.7 L26.7,230.0 L40.0,229.1 L53.3,231.6 L66.7,228.7 L80.0,231.7 L93.3,229.2 L106.7,226.3 L120.0,226.4 L133.3,227.9 L146.7,226.5 L160.0,233.1 L173.3,228.2 L186.7,228.3 L200.0,227.1 L213.3,228.0 L226.7,234.0 L240.0,227.9 L253.3,228.4 L266.7,225.8 L280.0,229.8 L293.3,227.5 L306.7,225.8 L320.0,226.6 L333.3,226.2 L346.7,256.8 L360.0,233.8 L373.3,227.1 L386.7,232.4 L400.0,232.2 L413.3,230.0 L426.7,231.0 L440.0,232.7 L453.3,230.1 L466.7,231.7 L480.0,233.4 L493.3,230.6 L506.7,225.9 L520.0,232.5 L533.3,233.8 L546.7,226.5 L560.0,260.7 L573.3,229.6 L586.7,203.3 L600.0,229.9 L613.3,201.8 L626.7,230.3 L640.0,226.4 L653.3,227.9 L666.7,228.0 L680.0,227.5 L693.3,234.0 L706.7,229.0 L720.0,231.5 L733.3,231.0 L746.7,226.5 L760.0,227.9 L773.3,228.4 L786.7,225.9 L800.0,260.9 L813.3,227.6 L826.7,231.8 L840.0,229.7 L853.3,234.1 L866.7,228.4 L880.0,229.8 L893.3,226.4 L906.7,234.2 L920.0,229.0 L933.3,233.6 L946.7,226.6 L960.0,228.0 L973.3,230.9 L986.7,228.1 L1000.0,228.9 L1013.3,233.2 L1026.7,227.1 L1040.0,231.5 L1053.3,231.9 L1066.7,229.0 L1080.0,228.6 L1093.3,228.6 L1106.7,233.7 L1120.0,225.9 L1133.3,227.9 L1146.7,261.2 L1160.0,228.8 L1173.3,228.1 L1186.7,210.2 L1200.0,231.1" fill="none" stroke="#4ec98f" stroke-width="1" opacity=".3"/>
+      </svg>
+      <div>
+        <h2>Build the Future of Human Performance.</h2>
+        <p class="ctxt">Join us in creating the cognitive performance measurement standard for high-stress environments.</p>
+      </div>
+      <div class="cta-right">
+        <a class="btn btn-primary" href="mailto:hannasav.me@gmail.com">Request a demo <span class="ar">&#8599;</span></a>
+        <div class="contact">Or contact us at <a href="mailto:hannasav.me@gmail.com">hannasav.me@gmail.com</a></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="site">
-    <div class="wrap foot">
-      <a class="brand" href="#top">
-        <img class="logo" style="width:34px;height:34px" src="astra-assets/mindcore-icon-primary.svg"
-          alt="ASTRA MINDCORE logo">
-        <span class="btxt"><b>ASTRA</b><span>MINDCORE</span></span>
-      </a>
-      <nav class="flinks">
-        <a href="#solution">Technology</a><a href="#validation">Research</a><a href="#award">Award</a><a
-          href="#env">Applications</a><a href="#product">About</a><a href="#cta">Contact</a>
-      </nav>
-      <div class="cpy">&#169; 2026 ASTRA MINDCORE. All rights reserved.</div>
-    </div>
-  </footer>
+<!-- FOOTER -->
+<footer class="site">
+  <div class="wrap foot">
+    <a class="brand" href="#top">
+      <img class="logo" style="width:34px;height:34px" src="astra-assets/mindcore-icon-primary.svg" alt="ASTRA MINDCORE logo">
+      <span class="btxt"><b>ASTRA</b><span>MINDCORE</span></span>
+    </a>
+    <nav class="flinks">
+      <a href="#solution">Technology</a><a href="#validation">Research</a><a href="#award">Award</a><a href="#env">Applications</a><a href="#product">About</a><a href="#cta">Contact</a>
+    </nav>
+    <div class="cpy">&#169; 2026 ASTRA MINDCORE. All rights reserved.</div>
+  </div>
+</footer>
 
-  <script src="/script.js"></script>
-  <script type="module" src="/src/main.tsx"></script>
+<script src="/script.js"></script>
+<script type="module" src="/src/main.tsx"></script>
 </body>
-
 </html>
